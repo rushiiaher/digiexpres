@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Star, Users, Award, CheckCircle, Lightbulb, Code2, Globe, Brain, Shield, Cloud } from 'lucide-react';
 import HeroBackground from '../components/common/AnimatedBackground';
+import SEO from '../components/common/SEO';
 
 // ─── Real Client Testimonials ──────────────────────────────
 const HOME_TESTIMONIALS = [
@@ -103,8 +104,31 @@ const Home = () => {
     setTextShift({ x: 0, y: 0 });
   }, []);
 
+  const localBusinessSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Digiexpres Tech Solution",
+    "image": "https://www.digiexpres.com/digiexpres_logo%20copy%20copy%20copy.png",
+    "@id": "https://www.digiexpres.com",
+    "url": "https://www.digiexpres.com",
+    "telephone": "+917397990245",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 16, 2nd Floor, GNP Galleria, Regency Anantam Rd",
+      "addressLocality": "Dombivli",
+      "postalCode": "421203",
+      "addressCountry": "IN"
+    } 
+  });
+
   return (
     <div>
+      <SEO 
+        title="Web Development & AI Solutions Company" 
+        description="Digiexpres Tech Solution provides custom web development, mobile apps, digital marketing, and AI integration services for startups and enterprises." 
+        schemaMarkup={localBusinessSchema}
+        canonicalUrl="https://www.digiexpres.com/"
+      />
       {/* ── Hero Section ─────────────────────────────────────────────── */}
       <section
         ref={sectionRef}
@@ -177,9 +201,9 @@ const Home = () => {
 
               {/* Social proof line */}
               <div className="flex items-center gap-3 pt-1" style={{ animation: 'heroFadeUp 0.7s ease 0.45s both' }}>
-                <div className="flex -space-x-2">
-                  {['#2563eb', '#1d4ed8', '#3b82f6', '#60a5fa'].map((c, i) => (
-                    <div key={i} className="w-7 h-7 rounded-full border-2 border-[#0b1f3a]" style={{ background: c }} />
+                <div className="flex -space-x-3">
+                  {['/Photos/Irfan.jpeg', '/Photos/Rajeesh_shaha.jpeg', '/Photos/Ravi_Ahuja.jpeg', '/Photos/Yukar.jpeg'].map((src, i) => (
+                    <img key={i} src={src} alt="Trusted Client" className="w-9 h-9 rounded-full border-2 border-[#0b1f3a] object-cover" />
                   ))}
                 </div>
                 <p className="text-sm text-white/50">

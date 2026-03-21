@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Clock, Users, TrendingUp, CheckCircle, Target, Lightbulb, BarChart3 } from 'lucide-react';
 import { caseStudies } from '../data/mockData';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 
 const CaseStudyDetail = () => {
   const { id } = useParams<{ id: string }>();

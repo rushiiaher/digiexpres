@@ -13,6 +13,9 @@ import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+import CookieNotice from './pages/CookieNotice';
 import PageTransition from './components/common/PageTransition';
 
 type PageProps = {
@@ -41,6 +44,9 @@ export default function AnimatedRoutes() {
                 <Route path="/contact" element={<TransitionWrapper element={<Contact />} bgColor="#0b1f3a" />} />
                 <Route path="/admin/login" element={<TransitionWrapper element={<AdminLogin />} bgColor="#0b1f3a" />} />
                 <Route path="/admin/dashboard" element={<TransitionWrapper element={<AdminDashboard />} bgColor="#0b1f3a" />} />
+                <Route path="/privacy-policy" element={<TransitionWrapper element={<PrivacyPolicy />} bgColor="#0b1f3a" />} />
+                <Route path="/terms-of-service" element={<TransitionWrapper element={<TermsOfService />} bgColor="#0b1f3a" />} />
+                <Route path="/cookie-notice" element={<TransitionWrapper element={<CookieNotice />} bgColor="#0b1f3a" />} />
             </Routes>
         </AnimatePresence>
     );

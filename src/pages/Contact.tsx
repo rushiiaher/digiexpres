@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ChevronDown } from 'lucide-react';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 

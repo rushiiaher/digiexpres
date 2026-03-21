@@ -1,9 +1,8 @@
-import React from 'react';
 
 const ChatBot = () => {
   // Use a generic WhatsApp redirect link. 
   // Replace the number below with the actual business WhatsApp number.
-  const whatsappNumber = "1234567890"; 
+  const whatsappNumber = "917397990245"; 
   const message = encodeURIComponent("Hello! I'm interested in Digiexpres Tech Solutions.");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 

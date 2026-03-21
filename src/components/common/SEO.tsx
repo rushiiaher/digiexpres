@@ -7,9 +7,11 @@ interface SEOProps {
   keywords?: string;
   image?: string;
   url?: string;
+  schemaMarkup?: string;
+  canonicalUrl?: string;
 }
 
-const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) => {
+const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url, schemaMarkup, canonicalUrl }) => {
   const siteTitle = 'Digiexpres Tech Solution';
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const defaultImage = 'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200';
@@ -19,7 +21,14 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, image, url }) =
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
       
+      {schemaMarkup && (
+        <script type="application/ld+json">
+          {schemaMarkup}
+        </script>
+      )}
+
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />

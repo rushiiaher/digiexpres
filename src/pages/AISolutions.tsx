@@ -5,7 +5,7 @@ import {
   HeartPulse, Landmark, ShoppingBag, Factory,
   Search, Database, Workflow, LineChart,
 } from 'lucide-react';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 
 /* ─── Brand constants ─────────────────────────── */
 const BLUE = '#2563eb';

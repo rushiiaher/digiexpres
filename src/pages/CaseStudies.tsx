@@ -6,7 +6,7 @@ import {
   Building, Sprout, Clapperboard, Car,
 } from 'lucide-react';
 import { caseStudies } from '../data/mockData';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 
 /* ─── Brand constants ─────────────────────────── */
 const BLUE = '#2563eb';
@@ -17,7 +17,7 @@ const DARK = '#0b1f3a';
 const STATS = [
   { value: '500+', label: 'Projects Delivered' },
   { value: '98%', label: 'Success Rate' },
-  { value: '$50M+', label: 'Client Savings' },
+  { value: '$300k+', label: 'Client Savings' },
   { value: '15+', label: 'Industries Served' },
 ];
 

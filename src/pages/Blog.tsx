@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, User, Search, Tag, ArrowRight } from 'lucide-react';
 import { db } from '../lib/firebase';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 
 /* ─── Brand constants ─────────────────────────── */

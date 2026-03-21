@@ -3,7 +3,7 @@ import {
   Target, Eye, Heart, ArrowRight,
   CheckCircle, Award, Clock, Users, Code, Zap, ShieldCheck
 } from 'lucide-react';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 
 /* ─── Brand constants ─────────────────────────── */
 const BLUE = '#2563eb';

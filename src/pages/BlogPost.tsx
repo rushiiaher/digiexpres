@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Clock, User, Share2, Twitter, Linkedin, Facebook, Tag } from 'lucide-react';
-import SEO from '../components/Common/SEO';
+import SEO from '../components/common/SEO';
 import { db } from '../lib/firebase';
 import { collection, onSnapshot, query, orderBy } from 'firebase/firestore';
 
