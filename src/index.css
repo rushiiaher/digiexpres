@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* ─── Custom CodePen Testimonial Box Styling ───────── */
+.testimonial-card {
+  width: 600px;
+  max-width: 90vw;
+  flex-shrink: 0;
+  padding: 2.5rem 2.5rem 2.5rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 3rem 2rem 5rem 2rem;
+  z-index: 1; /* Creates a root stacking context for the card */
+}
+.testimonial-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: #ffca52;
+  z-index: 0; /* Above the -1 pseudo-elements, below the content */
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1), 0 10px 15px rgba(0,0,0,0.05);
+}
+.testimonial-card > * {
+  position: relative;
+  z-index: 2; /* All text/quotes float above the yellow bg */
+}
+.testimonial-card:after {
+  content: "";
+  border: 10px solid #0b1f3a;
+  border-radius: 60px;
+  width: 95%;
+  height: 115%;
+  position: absolute;
+  z-index: -1;
+  left: 1.5rem;
+  top: -1.5rem;
+}
+.testimonial-card:before {
+  content: "";
+  position: absolute;
+  bottom: -45px;
+  left: 80px;
+  z-index: -1; /* Placed exactly under the yellow bg */		
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 45px 60px 0 0;
+  border-color: #0b1f3a transparent transparent transparent;
+}
+.testimonial-card .quote {
+  position: absolute;
+  font-size: 2.5rem;
+  width: 48px;
+  height: 48px;
+  background: #0b1f3a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 14px;
+  font-family: Georgia, serif;
+  font-style: italic;
+}
+.testimonial-card .quote.open {
+  top: 0;
+  left: 0;
+}
+.testimonial-card .quote.close {
+  bottom: 0;
+  right: 0;
+}
+.testimonial-card p.content-text {
+  width: 100%;
+  padding-right: 140px; /* Leave space for image */
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #111;
+  margin: 0;
+  line-height: 1.6;
+  min-height: 110px;
+}
+.testimonial-card .source {
+  align-self: flex-end;
+  margin-top: 1.5rem;
+  padding-right: 40px;
+}
+.testimonial-card .source span {			
+  display: block;
+  font-weight: 800;
+  font-size: 1.15em;
+  text-align: right;
+  color: #0b1f3a;
+}
+.testimonial-card .source span:before {
+  content: "\2014";
+  display: inline;
+  margin-right: 5px;
+}
+.testimonial-card .image-wrapper {
+  transform: rotate(-6deg);
+  position: absolute;
+  top: -1rem;
+  right: 1.5rem;
+  width: 130px;
+  height: 130px;
+  background: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.testimonial-card .image-wrapper img, 
+.testimonial-card .image-wrapper .fallback-avatar {
+  border: 8px solid #fff;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 36px;
+  color: #0b1f3a;
+}
+.testimonial-card .image-wrapper .clip {
+  border: 4px solid #cbd5e1;
+  border-right: none;
+  height: 60px;
+  width: 16px;
+  position: absolute;
+  right: 25%;
+  top: -15%;
+  border-radius: 25px;
+  z-index: 100;
+}
+.testimonial-card .image-wrapper .clip:before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  right: -2px;
+  height: 12px;
+  width: 16px;
+  border: 4px solid #cbd5e1;
+  border-bottom: none;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+}
+.testimonial-card .image-wrapper .clip:after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  right: -2px;
+  height: 35px;
+  width: 16px;
+  border: 4px solid #cbd5e1;
+  border-top: none;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+
+/* ── Marquee Animation ── */
+.testimonial-marquee-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  padding: 20px 0;
+}
+.testimonial-marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll-left 50s linear infinite;
+}
+.testimonial-marquee:hover {
+  animation-play-state: paused;
+}
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
