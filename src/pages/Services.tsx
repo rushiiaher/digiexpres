@@ -117,7 +117,7 @@ const Services = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {SERVICES.map((s) => (
             <div
               key={s.title}
@@ -167,7 +167,7 @@ const Services = () => (
       <div style={{ position: 'absolute', top: '-100px', left: '30%', width: '700px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(37,99,235,0.10) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left */}
           <div>
@@ -183,7 +183,7 @@ const Services = () => (
               We don't just run campaigns — we build sustainable growth engines. From search to social, from brand to conversion, every channel is orchestrated into one measurable system.
             </p>
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '36px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-9">
               {[
                 { icon: <Search strokeWidth={1.6} className="h-5 w-5" />, title: 'Search Domination', desc: 'SEO, SEM, and local search to capture high-intent traffic at every stage.' },
                 { icon: <Share2 strokeWidth={1.6} className="h-5 w-5" />, title: 'Social Amplification', desc: 'AI-optimised content and paid social across all major platforms.' },
@@ -235,7 +235,7 @@ const Services = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px', position: 'relative' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {/* Connector line */}
           <div style={{ position: 'absolute', top: '40px', left: '12.5%', right: '12.5%', height: '2px', background: 'linear-gradient(to right, rgba(37,99,235,0.15), rgba(37,99,235,0.5), rgba(37,99,235,0.15))', zIndex: 0 }} />
 
@@ -266,7 +266,7 @@ const Services = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {WHY.map((w) => (
             <div key={w.title} style={{ background: '#fff', borderRadius: '14px', border: '1px solid #e2e8f0', padding: '28px 28px 24px', display: 'flex', gap: '16px', alignItems: 'flex-start', transition: 'box-shadow 0.2s, transform 0.2s' }}
               onMouseEnter={(e) => { const d = e.currentTarget as HTMLDivElement; d.style.boxShadow = '0 6px 30px rgba(37,99,235,0.09)'; d.style.transform = 'translateY(-2px)'; }}

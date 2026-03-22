@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail } from 'lucide-react';
+import SimpleCaptcha from '../components/common/SimpleCaptcha';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isCaptchaValid) {
+      alert('Please enter the correct Captcha verification code.');
+      return;
+    }
     if (credentials.email === 'admin@digiexpres.com' && credentials.password === 'admin123') {
       localStorage.setItem('adminAuth', 'true');
       navigate('/admin/dashboard');
@@ -51,6 +57,10 @@ const AdminLogin = () => {
                 required
               />
             </div>
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Human Verification</label>
+            <SimpleCaptcha onValidate={setIsCaptchaValid} />
           </div>
           <button
             type="submit"

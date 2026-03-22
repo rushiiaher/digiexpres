@@ -141,9 +141,7 @@ const Blog = () => {
 
             <Link
               to={`/blog/${featuredPost.id}`}
-              style={{ textDecoration: 'none', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0', background: '#ffffff', borderRadius: '16px', border: '1px solid #e8edf4', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 30px rgba(0,0,0,0.06)', transition: 'transform 0.25s ease, box-shadow 0.25s ease' }}
-              onMouseEnter={(e) => { const d = e.currentTarget as HTMLAnchorElement; d.style.transform = 'translateY(-4px)'; d.style.boxShadow = '0 16px 50px rgba(0,0,0,0.1)'; }}
-              onMouseLeave={(e) => { const d = e.currentTarget as HTMLAnchorElement; d.style.transform = 'translateY(0)'; d.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04), 0 8px 30px rgba(0,0,0,0.06)'; }}
+              className="grid grid-cols-1 lg:grid-cols-2 bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm hover:-translate-y-1 hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
               <div style={{ position: 'relative', overflow: 'hidden', minHeight: '360px' }}>
@@ -228,7 +226,7 @@ const Blog = () => {
               <p style={{ fontSize: '14px', color: '#64748b' }}>Try adjusting your search terms or selecting a different category.</p>
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredPosts.map((post) => (
                 <Link
                   key={post.id}

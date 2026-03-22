@@ -79,9 +79,9 @@ const About = () => (
     {/* ── Stats Band ───────────────────────────────────────────── */}
     <section style={{ background: '#ffffff', padding: '56px 0', borderBottom: '1px solid #f1f5f9' }}>
       <div className="max-w-5xl mx-auto px-6">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0">
           {STATS.map((stat, i) => (
-            <div key={stat.label} style={{ textAlign: 'center', padding: '0 24px', borderRight: i < 3 ? '1px solid #f1f5f9' : 'none' }}>
+            <div key={stat.label} className={`text-center px-6 ${i % 2 === 0 ? 'border-r border-slate-100' : ''} lg:border-r lg:last:border-r-0 lg:border-slate-100`}>
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px', color: BLUE }}>{stat.icon}</div>
               <p style={{ fontSize: '2.2rem', fontWeight: 900, color: DARK, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>
               <p style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>{stat.label}</p>
@@ -94,7 +94,7 @@ const About = () => (
     {/* ── Our Story ────────────────────────────────────────────── */}
     <section style={{ background: '#ffffff', padding: '96px 0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left */}
           <div>
@@ -126,7 +126,7 @@ const About = () => (
               style={{ borderRadius: '16px', width: '100%', height: '480px', objectFit: 'cover', display: 'block' }}
             />
             {/* Floating years badge */}
-            <div style={{ position: 'absolute', bottom: '-20px', right: '-20px', background: DARK, borderRadius: '16px', padding: '24px 28px', boxShadow: '0 20px 60px rgba(0,0,0,0.3)', textAlign: 'center' }}>
+            <div className="absolute -bottom-4 right-0 sm:-right-5 bg-[#0b1f3a] rounded-2xl p-6 sm:p-7 shadow-[0_20px_60px_rgba(0,0,0,0.3)] text-center">
               <div style={{ fontSize: '2.4rem', fontWeight: 900, color: '#ffffff', lineHeight: 1 }}>5+</div>
               <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.6)', fontWeight: 500, marginTop: '4px' }}>Years of Excellence</div>
             </div>
@@ -146,7 +146,7 @@ const About = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {PILLARS.map((p) => (
             <div
               key={p.label}
@@ -181,7 +181,7 @@ const About = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               title: 'Strategic Alignment',
@@ -244,9 +244,9 @@ const About = () => (
           <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(96,165,250,0.7)', marginBottom: '14px' }}>By The Numbers</p>
           <h2 style={{ fontSize: '2rem', fontWeight: 800, color: '#ffffff', letterSpacing: '-0.02em' }}>Our Achievements</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0">
           {STATS.map((stat, i) => (
-            <div key={stat.label} style={{ textAlign: 'center', padding: '0 24px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
+            <div key={stat.label} className={`text-center px-6 ${i % 2 === 0 ? 'border-r border-white/10' : ''} lg:border-r lg:last:border-r-0 lg:border-white/10`}>
               <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', color: '#60a5fa' }}>{stat.icon}</div>
               <p style={{ fontSize: '2.4rem', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>
               <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{stat.label}</p>

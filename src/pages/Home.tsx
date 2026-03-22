@@ -377,7 +377,7 @@ const Home = () => {
           </div>
 
           {/* Cards grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 icon: <Lightbulb strokeWidth={1.6} className="h-6 w-6" />,
@@ -570,14 +570,14 @@ const Home = () => {
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(37,99,235,0.5), transparent)' }} />
         <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, rgba(37,99,235,0.3), transparent)' }} />
         <div className="max-w-5xl mx-auto px-6" style={{ position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0">
             {[
               { value: '500+', label: 'Happy Clients', icon: <Users strokeWidth={1.5} className="h-5 w-5" /> },
               { value: '250+', label: 'Projects Delivered', icon: <Award strokeWidth={1.5} className="h-5 w-5" /> },
               { value: '99.9%', label: 'Uptime Guarantee', icon: <Zap strokeWidth={1.5} className="h-5 w-5" /> },
               { value: '4.9/5', label: 'Client Rating', icon: <Star strokeWidth={1.5} className="h-5 w-5" /> },
             ].map((stat, i) => (
-              <div key={stat.label} style={{ textAlign: 'center', padding: '0 24px', borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
+              <div key={stat.label} className={`text-center px-6 ${i % 2 === 0 ? 'border-r border-white/10' : ''} lg:border-r lg:last:border-r-0 lg:border-white/10`}>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px', color: '#60a5fa' }}>{stat.icon}</div>
                 <p style={{ fontSize: '2.4rem', fontWeight: 900, color: '#ffffff', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>
                 <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.45)', fontWeight: 500 }}>{stat.label}</p>
@@ -600,7 +600,7 @@ const Home = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-             <div className="relative w-full max-w-3xl flex justify-center" style={{ minHeight: '340px' }}>
+             <div className="relative w-full max-w-3xl flex justify-center min-h-[450px] md:min-h-[340px]">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeTestimonial}
@@ -613,7 +613,7 @@ const Home = () => {
                     {(() => {
                       const t = HOME_TESTIMONIALS[activeTestimonial];
                       return (
-                        <div className="testimonial-card" style={{ maxWidth: '600px', margin: '1rem 1rem 2.5rem 1rem' }}>
+                        <div className="testimonial-card">
                           <div className="testimonial-bg"></div>
                           <span className="open quote">“</span>
                           <div className="image-wrapper">

@@ -116,7 +116,7 @@ const AISolutions = () => (
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* Left */}
           <div>
@@ -164,9 +164,9 @@ const AISolutions = () => (
     {/* ── ROI Stats Band ────────────────────────────────────────── */}
     <section style={{ background: '#ffffff', padding: '56px 0', borderBottom: '1px solid #f1f5f9' }}>
       <div className="max-w-5xl mx-auto px-6">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0">
           {ROI.map((stat, i) => (
-            <div key={stat.label} style={{ textAlign: 'center', padding: '0 24px', borderRight: i < 3 ? '1px solid #f1f5f9' : 'none' }}>
+            <div key={stat.label} className={`text-center px-6 ${i % 2 === 0 ? 'border-r border-slate-100' : ''} lg:border-r lg:last:border-r-0 lg:border-slate-100`}>
               <p style={{ fontSize: '2.2rem', fontWeight: 900, color: BLUE, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>
               <p style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>{stat.label}</p>
             </div>
@@ -187,7 +187,7 @@ const AISolutions = () => (
         </div>
 
         {/* Auto-fit responsive grid */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {AI_SOLUTIONS.map((s) => (
             <Link
               key={s.title}
@@ -281,7 +281,7 @@ const AISolutions = () => (
           <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '500px', margin: '0 auto' }}>Tailored AI applications built around the specific challenges of your sector.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '24px' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.name}
@@ -318,7 +318,7 @@ const AISolutions = () => (
           <p style={{ fontSize: '1rem', color: 'rgba(255,255,255,0.5)', maxWidth: '500px', margin: '0 auto' }}>A five-phase framework that ensures every AI project ships on time and delivers ROI.</p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: '16px', position: 'relative' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 relative">
           <div style={{ position: 'absolute', top: '40px', left: '10%', right: '10%', height: '1px', background: 'linear-gradient(to right, rgba(37,99,235,0.15), rgba(37,99,235,0.5), rgba(37,99,235,0.15))', zIndex: 0 }} />
           {PROCESS.map((p) => (
             <div key={p.step} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
@@ -337,14 +337,14 @@ const AISolutions = () => (
     {/* ── Real-world Impact ─────────────────────────────────────── */}
     <section style={{ background: '#f8fafc', padding: '96px 0' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'start' }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
           <div>
             <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: BLUE, marginBottom: '14px' }}>Measurable Impact</p>
             <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: '16px' }}>Real Results, Real Numbers</h2>
             <p style={{ fontSize: '1rem', color: '#64748b', lineHeight: 1.7, marginBottom: '36px' }}>
               Every AI engagement is tied to KPIs agreed before work begins. These are real averages across our delivered projects.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {ROI.map((stat) => (
                 <div key={stat.label} style={{ background: '#fff', borderRadius: '14px', border: '1px solid #e2e8f0', padding: '24px', textAlign: 'center' }}>
                   <p style={{ fontSize: '2rem', fontWeight: 900, color: BLUE, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, ChevronDown } from 'lucide-react';
 import SEO from '../components/common/SEO';
+import SimpleCaptcha from '../components/common/SimpleCaptcha';
 import { db } from '../lib/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
@@ -80,6 +81,7 @@ const Contact = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [isCaptchaValid, setIsCaptchaValid] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -88,6 +90,10 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!isCaptchaValid) {
+      alert('Please enter the correct Captcha verification code.');
+      return;
+    }
     try {
       await addDoc(collection(db, 'contacts'), {
         ...formData,
@@ -149,7 +155,7 @@ const Contact = () => {
       {/* ── Main grid: Form + Info ────────────────────────────────── */}
       <section style={{ background: '#f8fafc', padding: '80px 0' }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr', gap: '32px', alignItems: 'start' }}>
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-8 items-start">
 
             {/* ── Contact Form ── */}
             <div style={{ background: '#ffffff', borderRadius: '16px', border: '1px solid #e8edf4', padding: '44px', boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 30px rgba(0,0,0,0.06)' }}>
@@ -171,7 +177,7 @@ const Contact = () => {
               ) : (
                 <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                   {/* Name + Email */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="name" style={labelStyle}>Full Name <span style={{ color: BLUE }}>*</span></label>
                       <input id="name" name="name" type="text" required placeholder="Jane Smith" value={formData.name} onChange={handleChange} style={inputStyle} onFocus={focusInput} onBlur={blurInput} />
@@ -183,7 +189,7 @@ const Contact = () => {
                   </div>
 
                   {/* Company + Phone */}
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                       <label htmlFor="company" style={labelStyle}>Company</label>
                       <input id="company" name="company" type="text" placeholder="Acme Ltd." value={formData.company} onChange={handleChange} style={inputStyle} onFocus={focusInput} onBlur={blurInput} />
@@ -219,6 +225,12 @@ const Contact = () => {
                       style={{ ...inputStyle, resize: 'vertical', minHeight: '120px', fontFamily: 'inherit' }}
                       onFocus={focusInput} onBlur={blurInput}
                     />
+                  </div>
+
+                  {/* Captcha */}
+                  <div>
+                    <label style={labelStyle}>Verification <span style={{ color: BLUE }}>*</span></label>
+                    <SimpleCaptcha onValidate={setIsCaptchaValid} />
                   </div>
 
                   <button

@@ -75,9 +75,9 @@ const CaseStudies = () => (
     {/* ── Stats Band ───────────────────────────────────────────── */}
     <section style={{ background: '#ffffff', padding: '56px 0', borderBottom: '1px solid #f1f5f9' }}>
       <div className="max-w-5xl mx-auto px-6">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 lg:gap-0">
           {STATS.map((stat, i) => (
-            <div key={stat.label} style={{ textAlign: 'center', padding: '0 24px', borderRight: i < 3 ? '1px solid #f1f5f9' : 'none' }}>
+            <div key={stat.label} className={`text-center px-6 ${i % 2 === 0 ? 'border-r border-slate-100' : ''} lg:border-r lg:last:border-r-0 lg:border-slate-100`}>
               <p style={{ fontSize: '2.4rem', fontWeight: 900, color: BLUE, lineHeight: 1, letterSpacing: '-0.02em', marginBottom: '6px' }}>{stat.value}</p>
               <p style={{ fontSize: '13px', color: '#64748b', fontWeight: 500 }}>{stat.label}</p>
             </div>
@@ -98,7 +98,7 @@ const CaseStudies = () => (
         </div>
 
         {/* Card grid — 3-column */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '28px' }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           {caseStudies.map((study) => (
             <Link
               key={study.id}
@@ -198,7 +198,7 @@ const CaseStudies = () => (
           </p>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', gap: '12px' }}>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
           {INDUSTRIES.map((ind) => (
             <div
               key={ind.name}
