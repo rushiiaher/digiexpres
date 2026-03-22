@@ -88,7 +88,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 dark:border-gray-700 mt-12 pt-8 flex flex-col md:flex-row items-center justify-between">
           <p className="text-gray-300 dark:text-gray-400 text-sm">
-            © 2025 Digiexpres Tech Solution. All rights reserved.
+            © 2026 Digiexpres Tech Solution. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0 text-sm">
             <Link to="/privacy-policy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</Link>

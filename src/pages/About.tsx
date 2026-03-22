@@ -56,7 +56,7 @@ const About = () => (
 
       <div className="max-w-4xl mx-auto px-6 text-center" style={{ position: 'relative', zIndex: 1 }}>
         <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(96,165,250,0.8)', marginBottom: '20px' }}>
-          Est. 2019 · Pune, India
+          Est. 2026 · Pune, India
         </p>
         <h1 style={{ fontSize: 'clamp(2.2rem, 5vw, 3.5rem)', fontWeight: 900, color: '#ffffff', lineHeight: 1.1, letterSpacing: '-0.025em', marginBottom: '20px' }}>
           Tech Built Around<br />
