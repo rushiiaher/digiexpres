@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Plus, Edit, Trash2, FileText, Mail, Tags, UploadCloud, User, LogOut } from 'lucide-react';
-import { db, storage } from '../lib/firebase';
+import { db, storage, auth } from '../lib/firebase';
 import { collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, query, orderBy } from 'firebase/firestore';
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 interface BlogPost {
   id: string;
@@ -51,10 +52,9 @@ const AdminDashboard = () => {
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem('adminAuth') !== 'true') {
-      navigate('/admin/login');
-      return;
-    }
+    const unsubscribeAuth = onAuthStateChanged(auth, (user) => {
+      if (!user) navigate('/admin/login');
+    });
 
     const qBlogs = query(collection(db, 'blogs'), orderBy('date', 'desc'));
     const unsubscribeBlogs = onSnapshot(qBlogs, (snapshot) => {
@@ -71,12 +71,11 @@ const AdminDashboard = () => {
       setCategories(snapshot.docs.map(doc => ({ id: doc.id, name: doc.data().name })));
     });
 
-    return () => { unsubscribeBlogs(); unsubscribeContacts(); unsubscribeCats(); };
+    return () => { unsubscribeAuth(); unsubscribeBlogs(); unsubscribeContacts(); unsubscribeCats(); };
   }, [navigate]);
 
   const handleLogout = () => {
-    localStorage.removeItem('adminAuth');
-    navigate('/admin/login');
+    signOut(auth).then(() => navigate('/admin/login'));
   };
 
   // ─── Blog Handlers ────────────────────────────────────────────────────────

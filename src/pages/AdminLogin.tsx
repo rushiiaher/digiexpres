@@ -1,24 +1,32 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Lock, Mail } from 'lucide-react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../lib/firebase';
 import SimpleCaptcha from '../components/common/SimpleCaptcha';
 
 const AdminLogin = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [isCaptchaValid, setIsCaptchaValid] = useState(false);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isCaptchaValid) {
-      alert('Please enter the correct Captcha verification code.');
+      setError('Please complete the captcha verification.');
       return;
     }
-    if (credentials.email === 'admin@digiexpres.com' && credentials.password === 'Digiexpres@00') {
-      localStorage.setItem('adminAuth', 'true');
+    setError('');
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, credentials.email, credentials.password);
       navigate('/admin/dashboard');
-    } else {
-      alert('Invalid credentials');
+    } catch {
+      setError('Invalid email or password.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -62,11 +70,13 @@ const AdminLogin = () => {
             <label className="block text-sm font-medium text-gray-700 mb-2">Human Verification</label>
             <SimpleCaptcha onValidate={setIsCaptchaValid} />
           </div>
+          {error && <p className="text-red-600 text-sm text-center">{error}</p>}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            disabled={loading}
+            className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:opacity-60"
           >
-            Sign In
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
       </div>
