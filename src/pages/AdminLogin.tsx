@@ -14,7 +14,7 @@ const AdminLogin = () => {
       alert('Please enter the correct Captcha verification code.');
       return;
     }
-    if (credentials.email === 'admin@digiexpres.com' && credentials.password === 'admin123') {
+    if (credentials.email === 'admin@digiexpres.com' && credentials.password === 'Digiexpres@00') {
       localStorage.setItem('adminAuth', 'true');
       navigate('/admin/dashboard');
     } else {

@@ -50,6 +50,12 @@ const SERVICES = [
     description: 'Scalable cloud infrastructure, DevOps pipelines, and seamless migrations with zero downtime.',
     features: ['Cloud Migration (AWS/Azure/GCP)', 'Infrastructure as Code', 'DevOps & CI/CD', 'Monitoring & Observability'],
   },
+  {
+    icon: <TrendingUp strokeWidth={1.6} className="h-6 w-6" />,
+    title: 'Digital Marketing',
+    description: '360° digital marketing services to grow your business—SEO, social media, ads, websites & lead generation. We help you attract, engage & convert customers for consistent growth and better ROI. 📈',
+    features: ['Website Development & Optimization', 'Search Engine Optimization (SEO)', 'Social Media Marketing (SMM)', 'Paid Advertising (PPC & Ads)', 'Content Marketing', 'Analytics & Reporting', 'Online Reputation Management'],
+  },
 ];
 
 /* ─── Process steps ───────────────────────────── */
@@ -110,7 +116,7 @@ const Services = () => (
         <div style={{ textAlign: 'center', marginBottom: '64px' }}>
           <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: BLUE, marginBottom: '14px' }}>Our Services</p>
           <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', marginBottom: '14px' }}>
-            Six Core Practice Areas
+            Our Core Practice Areas
           </h2>
           <p style={{ fontSize: '1rem', color: '#64748b', maxWidth: '560px', margin: '0 auto', lineHeight: 1.7 }}>
             Specialised teams, proven methodologies, shared infrastructure — delivering excellence across every discipline.
