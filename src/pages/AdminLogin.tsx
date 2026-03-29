@@ -23,8 +23,22 @@ const AdminLogin = () => {
     try {
       await signInWithEmailAndPassword(auth, credentials.email, credentials.password);
       navigate('/admin/dashboard');
-    } catch {
-      setError('Invalid email or password.');
+    } catch (err: any) {
+      console.error('Firebase Auth Error:', err?.code, err?.message);
+      const code = err?.code || '';
+      if (code === 'auth/user-not-found' || code === 'auth/invalid-credential') {
+        setError('Invalid email or password.');
+      } else if (code === 'auth/wrong-password') {
+        setError('Incorrect password. Please try again.');
+      } else if (code === 'auth/too-many-requests') {
+        setError('Too many failed attempts. Please try again later.');
+      } else if (code === 'auth/network-request-failed') {
+        setError('Network error. Please check your connection.');
+      } else if (code === 'auth/invalid-email') {
+        setError('Invalid email format.');
+      } else {
+        setError(`Login failed: ${err?.message || 'Unknown error'}`);
+      }
     } finally {
       setLoading(false);
     }
