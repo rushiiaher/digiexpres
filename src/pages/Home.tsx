@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Star, Users, Award, CheckCircle, Lightbulb, Code2, Globe, Brain, Shield, Cloud } from 'lucide-react';
 import HeroBackground from '../components/common/AnimatedBackground';
 import SEO from '../components/common/SEO';
+import ClientSlider from '../components/common/ClientSlider';
 
 // ─── Real Client Testimonials ──────────────────────────────
 const HOME_TESTIMONIALS = [
@@ -651,6 +652,9 @@ const Home = () => {
         </div>
       </section>
 
+
+      {/* ── Client Logo Slider ──────────────────────────────────────── */}
+      <ClientSlider />
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
       <section style={{ background: '#0b1f3a', padding: '88px 0', position: 'relative', overflow: 'hidden' }}>
