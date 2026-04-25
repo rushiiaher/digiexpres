@@ -7,31 +7,100 @@ const ClientSlider = () => {
   }));
 
   return (
-    <section className="py-12 bg-gray-50 dark:bg-gray-800 border-y border-gray-200 dark:border-gray-700">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8">
-        <h2 className="text-2xl font-bold text-center text-gray-700 dark:text-gray-200">
-          Trusted by Leading Businesses
+    <section style={{ background: '#f1f5f9', padding: '60px 0', overflow: 'hidden', position: 'relative' }}>
+      {/* Top & bottom subtle dividers */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, #cbd5e1, transparent)' }} />
+      <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(to right, transparent, #cbd5e1, transparent)' }} />
+
+      {/* Heading */}
+      <div style={{ textAlign: 'center', marginBottom: '36px' }}>
+        <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#94a3b8', marginBottom: '8px' }}>
+          Our Clients
+        </p>
+        <h2 style={{ fontSize: '1.6rem', fontWeight: 800, color: '#0f172a', letterSpacing: '-0.02em', margin: 0 }}>
+          Trusted by <span style={{ color: '#2563eb' }}>500+</span> Businesses Worldwide
         </h2>
       </div>
-      <div className="relative overflow-hidden">
-        {/* Fade edges */}
-        <div className="absolute left-0 top-0 h-full w-24 bg-gradient-to-r from-gray-50 dark:from-gray-800 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 h-full w-24 bg-gradient-to-l from-gray-50 dark:from-gray-800 to-transparent z-10 pointer-events-none" />
-        <div className="flex animate-scroll">
-          {[...clients, ...clients].map((client, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 mx-6 flex items-center justify-center w-36 h-20 bg-white dark:bg-gray-700 rounded-lg shadow-sm px-3 hover:shadow-md transition-all duration-300 hover:scale-105"
-            >
-              <img
-                src={client.logo}
-                alt={client.name}
-                className="max-h-14 max-w-full w-auto object-contain"
-              />
-            </div>
-          ))}
+
+      {/* Marquee wrapper with fade edges */}
+      <div style={{ position: 'relative' }}>
+        {/* Left fade */}
+        <div style={{
+          position: 'absolute', left: 0, top: 0, bottom: 0, width: '120px', zIndex: 2, pointerEvents: 'none',
+          background: 'linear-gradient(to right, #f1f5f9, transparent)',
+        }} />
+        {/* Right fade */}
+        <div style={{
+          position: 'absolute', right: 0, top: 0, bottom: 0, width: '120px', zIndex: 2, pointerEvents: 'none',
+          background: 'linear-gradient(to left, #f1f5f9, transparent)',
+        }} />
+
+        {/* Scrolling track */}
+        <div style={{ overflow: 'hidden' }}>
+          <div className="logo-marquee">
+            {[...clients, ...clients].map((client, index) => (
+              <div key={index} className="logo-item">
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="logo-img"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
+
+      <style>{`
+        .logo-marquee {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          animation: logoScroll 40s linear infinite;
+          gap: 0;
+        }
+        .logo-marquee:hover {
+          animation-play-state: paused;
+        }
+        @keyframes logoScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .logo-item {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 200px;
+          height: 100px;
+          margin: 0 16px;
+          background: #ffffff;
+          border-radius: 12px;
+          border: 1px solid #e2e8f0;
+          padding: 14px 24px;
+          flex-shrink: 0;
+          transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+          cursor: default;
+        }
+        .logo-item:hover {
+          box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+          border-color: #bfdbfe;
+          transform: translateY(-3px);
+        }
+        .logo-img {
+          max-width: 100%;
+          max-height: 68px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          mix-blend-mode: multiply;
+          filter: grayscale(30%);
+          transition: filter 0.25s ease;
+        }
+        .logo-item:hover .logo-img {
+          filter: grayscale(0%);
+          mix-blend-mode: multiply;
+        }
+      `}</style>
     </section>
   );
 };
